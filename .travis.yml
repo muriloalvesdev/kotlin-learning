@@ -10,5 +10,9 @@ env:
   global:
     - CODECOV_TOKEN="9bf0508f-b097-49c5-82b8-9aac3f1c458c"
 
+before_install:
+  - chmod +x mvnw
+  - chmod +x .ci/script.sh
+
 after_success:
   - bash <(curl -s https://codecov.io/bash)
