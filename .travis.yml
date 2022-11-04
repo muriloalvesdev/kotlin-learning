@@ -5,7 +5,7 @@ language: kotlin
 sudo: required
 
 jdk:
-  - openjdk17
+  - openjdk18
 
 script:
   - chmod +x .ci/script.sh
