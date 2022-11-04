@@ -10,11 +10,15 @@ class UserGatewayImpl(
     private val repository: UserEntityRepository
 ) : UserGateway {
 
-    override fun find(username: String): Optional<UserEntity> {
+    override fun find(
+        username: String
+    ): Optional<UserEntity> {
         return this.repository.findByUsername(username)
     }
 
-    override fun save(username: String) {
+    override fun save(
+        username: String
+    ) {
         if (this.repository.existsByUsername(username)) throw UserAlreadyExistsException(username)
 
         this.repository.save(UserEntity(username))

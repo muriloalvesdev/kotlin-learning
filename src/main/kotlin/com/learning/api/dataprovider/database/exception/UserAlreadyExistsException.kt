@@ -6,7 +6,6 @@ class UserAlreadyExistsException(
     val username: String
 ) : java.lang.RuntimeException(
     format(
-        "username=%s already exists", username
+        "username=[%s] already exists.", username
     )
-) {
-}
+)

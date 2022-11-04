@@ -5,5 +5,5 @@ import java.lang.String.format
 class UsernameNotFoundException(
     username: String
 ) : java.lang.RuntimeException(
-    format("username=[%s] not found", username)
+    format("username=[%s] not found.", username)
 )

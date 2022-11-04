@@ -7,13 +7,17 @@ import com.learning.api.entrypoint.dto.User
 class UserUseCase(
     private val gateway: UserGateway
 ) {
-    fun find(username: String): User {
+    fun find(
+        username: String
+    ): User {
         val userEntity = this.gateway.find(username)
             .orElseThrow { UsernameNotFoundException(username) }
         return User.build(userEntity)
     }
 
-    fun save(username: String) {
+    fun save(
+        username: String
+    ) {
         this.gateway.save(username)
     }
 }

@@ -4,9 +4,11 @@ import com.learning.api.dataprovider.database.exception.UserAlreadyExistsExcepti
 import com.learning.api.dataprovider.database.exception.UsernameNotFoundException
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.web.bind.annotation.ControllerAdvice
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler
 
+@ControllerAdvice
 class AdviceController : ResponseEntityExceptionHandler() {
     companion object {
         private val NOT_FOUND: HttpStatus = HttpStatus.NOT_FOUND

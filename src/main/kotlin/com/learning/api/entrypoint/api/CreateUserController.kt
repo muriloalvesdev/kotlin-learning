@@ -1,12 +1,12 @@
 package com.learning.api.entrypoint.api
 
 import com.learning.api.core.usecase.UserUseCase
-import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 
 @RestController
 @RequestMapping("users")
@@ -14,14 +14,17 @@ class CreateUserController(
     private val useCase: UserUseCase
 ) {
 
-    companion object {
-        private val CREATED: HttpStatus = HttpStatus.CREATED
-    }
-
     @PostMapping
-    fun save(@RequestBody body: UserBody): ResponseEntity<Any> {
+    fun save(
+        @RequestBody body: UserBody
+    ): ResponseEntity<Any> {
         this.useCase.save(body.username())
-        return ResponseEntity.status(CREATED).build<Any>()
+        return ResponseEntity.created(
+            ServletUriComponentsBuilder.fromCurrentContextPath()
+                .path("users/{username}")
+                .buildAndExpand(body.username())
+                .toUri()
+        ).build<Any>()
     }
 
     data class UserBody(
