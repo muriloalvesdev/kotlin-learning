@@ -1,0 +1,11 @@
+version: "3"
+services:
+    kotlin:
+        image: muriloalvesdev/kotlin
+        network_mode: bridge
+        container_name: kotlin
+        expose:
+            - "8081"
+        ports:
+            - "8081:8081"
+        restart: unless-stopped
