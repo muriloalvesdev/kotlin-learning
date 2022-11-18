@@ -1,6 +1,7 @@
 package com.learning.api.entrypoint.api
 
-import com.learning.api.core.usecase.UserUseCase
+import com.learning.api.core.domain.user.User
+import com.learning.api.core.usecase.CreateUserUseCase
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestBody
@@ -11,27 +12,19 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder
 @RestController
 @RequestMapping("users")
 class CreateUserController(
-    private val useCase: UserUseCase
+    private val useCase: CreateUserUseCase
 ) {
 
     @PostMapping
     fun save(
-        @RequestBody body: UserBody
+        @RequestBody domain: User
     ): ResponseEntity<Any> {
-        this.useCase.save(body.username())
+        this.useCase.save(domain)
         return ResponseEntity.created(
             ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path("users/{username}")
-                .buildAndExpand(body.username())
+                .buildAndExpand(domain.username)
                 .toUri()
         ).build<Any>()
-    }
-
-    data class UserBody(
-        val username: String
-    ) {
-        fun username(): String {
-            return this.username
-        }
     }
 }

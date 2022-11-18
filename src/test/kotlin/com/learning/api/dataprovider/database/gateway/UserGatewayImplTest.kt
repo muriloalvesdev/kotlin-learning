@@ -1,11 +1,12 @@
 package com.learning.api.dataprovider.database.gateway
 
+import com.learning.api.BaseTest
+import com.learning.api.core.domain.user.User
 import com.learning.api.core.gateway.UserGateway
 import com.learning.api.dataprovider.database.entity.UserEntity
 import com.learning.api.dataprovider.database.exception.UserAlreadyExistsException
-import com.learning.api.dataprovider.database.repository.UserEntityRepository
 import com.learning.api.providers.UserEntityProviderTests
-import com.learning.api.utils.ConstantsTests.Companion.USERNAME_TEST
+import com.learning.api.providers.UserProviderTests
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -16,20 +17,20 @@ import org.mockito.BDDMockito.given
 import org.mockito.BDDMockito.times
 import org.mockito.BDDMockito.verify
 import org.mockito.Mockito.any
-import org.mockito.Mockito.mock
 import java.lang.String.format
 import java.util.Optional
 
-class UserGatewayImplTest {
-    private val repository: UserEntityRepository = mock(UserEntityRepository::class.java)
-    private val gateway: UserGateway = UserGatewayImpl(this.repository)
+class UserGatewayImplTest : BaseTest() {
+
+    private val gatewayImpl: UserGateway = UserGatewayImpl(this.repository, this.mapper)
 
     @DisplayName(
         "Deve tentar salvar o usuario, mas ele " +
             "ja existe na base de dados e deve retornar UserAlreadyExistsException."
     )
-    @Test
-    fun shouldTrySaveButReturnError() {
+    @ParameterizedTest
+    @ArgumentsSource(UserProviderTests::class)
+    fun shouldTrySaveButReturnError(domain: User) {
         //GIVEN
         val messageErrorExpected = format(
             "username=[%s] already exists.", USERNAME_TEST
@@ -40,7 +41,7 @@ class UserGatewayImplTest {
 
         //WHEN
         val exception = assertThrows<UserAlreadyExistsException> {
-            this.gateway.save(USERNAME_TEST)
+            this.gatewayImpl.save(domain)
         }
 
         //THEN
@@ -51,8 +52,9 @@ class UserGatewayImplTest {
     }
 
     @DisplayName("Deve salvar o usuario com sucesso.")
-    @Test
-    fun shouldSaveWithSuccess() {
+    @ParameterizedTest
+    @ArgumentsSource(UserProviderTests::class)
+    fun shouldSaveWithSuccess(domain: User) {
         //GIVEN
         given(
             this.repository.existsByUsername(USERNAME_TEST)
@@ -69,7 +71,7 @@ class UserGatewayImplTest {
         )
 
         //WHEN
-        this.gateway.save(USERNAME_TEST)
+        this.gatewayImpl.save(domain)
 
         //THEN
         verify(this.repository, times(1))
@@ -94,7 +96,7 @@ class UserGatewayImplTest {
         ).willReturn(Optional.of(userEntity))
 
         //WHEN
-        val userEntityOptional = this.gateway.find(USERNAME_TEST)
+        val userEntityOptional = this.gatewayImpl.find(USERNAME_TEST)
 
         //THEN
         verify(this.repository, times(1))
@@ -102,8 +104,8 @@ class UserGatewayImplTest {
 
         assertThat(userEntityOptional).isNotEmpty
 
-        assertThat(userEntity.username())
-            .isEqualTo(userEntityOptional.get().username())
+        assertThat(userEntity.username)
+            .isEqualTo(userEntityOptional.get().username)
     }
 
     @DisplayName("Deve buscar usuario por username e nao deve encontra-lo.")
@@ -115,7 +117,7 @@ class UserGatewayImplTest {
         ).willReturn(Optional.empty())
 
         //WHEN
-        val userEntityOptional = this.gateway.find(USERNAME_TEST)
+        val userEntityOptional = this.gatewayImpl.find(USERNAME_TEST)
 
         //THEN
         verify(this.repository, times(1))

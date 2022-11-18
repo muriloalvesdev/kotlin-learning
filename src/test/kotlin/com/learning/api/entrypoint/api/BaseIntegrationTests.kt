@@ -1,8 +1,8 @@
 package com.learning.api.entrypoint.api
 
 import com.fasterxml.jackson.databind.ObjectMapper
+import com.learning.api.BaseTest
 import com.learning.api.dataprovider.database.repository.UserEntityRepository
-import com.learning.api.utils.ConstantsTests
 import org.junit.jupiter.api.BeforeEach
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc
@@ -13,7 +13,7 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders
 import org.springframework.web.context.WebApplicationContext
 
 @SpringBootTest
-@ActiveProfiles(ConstantsTests.PROFILE_TEST)
+@ActiveProfiles(BaseTest.PROFILE_TEST)
 @AutoConfigureMockMvc
 class BaseIntegrationTests {
 
@@ -29,7 +29,7 @@ class BaseIntegrationTests {
     var mockMvc: MockMvc? = null
 
     companion object {
-        const val BASE_URL: String = "/users"
+        const val BASE_URL: String = "http://localhost:8080/users"
     }
 
     @BeforeEach

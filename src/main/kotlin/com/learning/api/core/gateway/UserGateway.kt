@@ -1,9 +1,9 @@
 package com.learning.api.core.gateway
 
-import com.learning.api.dataprovider.database.entity.UserEntity
+import com.learning.api.core.domain.user.User
 import java.util.Optional
 
 interface UserGateway {
-    fun find(username: String): Optional<UserEntity>
-    fun save(username: String)
+    fun find(username: String): Optional<User>
+    fun save(domain: User)
 }

@@ -1,8 +1,8 @@
 package com.learning.api.entrypoint.advice
 
+import com.learning.api.BaseTest.Companion.USERNAME_TEST
 import com.learning.api.dataprovider.database.exception.UserAlreadyExistsException
 import com.learning.api.dataprovider.database.exception.UsernameNotFoundException
-import com.learning.api.utils.ConstantsTests.Companion.USERNAME_TEST
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -40,7 +40,7 @@ class AdviceControllerTest {
     @Test
     fun shouldReturnUserAlreadyExistsException() {
         //GIVEN
-        val messageExceptionExpected = format("username=[%s] already exists.", USERNAME_TEST)
+        val messageExceptionExpected = "username=[$USERNAME_TEST] already exists."
 
         //WHEN
         val responseEntity = this.adviceController

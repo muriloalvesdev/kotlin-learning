@@ -10,16 +10,8 @@ import javax.persistence.Table
 @Table(name = "users")
 class UserEntity(
     @Column(name = "username", unique = true)
-    private val username: String
+    val username: String
 ) {
     @Id
-    private val uuid: UUID? = UUID.randomUUID()
-
-    fun uuid(): UUID {
-        return uuid!!
-    }
-
-    fun username(): String {
-        return this.username
-    }
+    val uuid: UUID? = UUID.randomUUID()
 }

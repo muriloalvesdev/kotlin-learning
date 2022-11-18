@@ -1,7 +1,7 @@
 package com.learning.api.dataprovider.database.repository
 
+import com.learning.api.BaseTest.Companion.USERNAME_TEST
 import com.learning.api.dataprovider.database.entity.UserEntity
-import com.learning.api.utils.ConstantsTests.Companion.USERNAME_TEST
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
@@ -50,8 +50,8 @@ class UserEntityRepositoryIntegrationTests {
         val userEntity = this.repository!!.save(UserEntity(USERNAME_TEST))
 
         //THEN
-        assertThat(userEntity.username()).isEqualTo(USERNAME_TEST)
-        assertThat(userEntity.uuid()).isNotNull
+        assertThat(userEntity.username).isEqualTo(USERNAME_TEST)
+        assertThat(userEntity.uuid).isNotNull
     }
 
     @DisplayName(
@@ -59,14 +59,16 @@ class UserEntityRepositoryIntegrationTests {
     )
     @Test
     fun shouldSaveAndFindByUserNameWithSuccess() {
-        // GIVEN | WHEN
+        // GIVEN
         this.repository!!.save(UserEntity(USERNAME_TEST))
-        val userEntityOptional = this.repository!!.findByUsername(USERNAME_TEST)
 
-        //THEN
+        // WHEN
+        val userEntityOptional = this.repository.findByUsername(USERNAME_TEST)
+
+        // THEN
         assertThat(userEntityOptional).isNotEmpty
-        assertThat(userEntityOptional.get().username()).isEqualTo(USERNAME_TEST)
-        assertThat(userEntityOptional.get().uuid()).isNotNull
+        assertThat(userEntityOptional.get().username).isEqualTo(USERNAME_TEST)
+        assertThat(userEntityOptional.get().uuid).isNotNull
     }
 
     @DisplayName(
@@ -75,11 +77,13 @@ class UserEntityRepositoryIntegrationTests {
     )
     @Test
     fun shouldCheckUsernameExistsWithResponseTrue() {
-        // GIVEN | WHEN
+        // GIVEN
         this.repository!!.save(UserEntity(USERNAME_TEST))
-        val existsByUsername = this.repository!!.existsByUsername(USERNAME_TEST)
 
-        //THEN
+        // WHEN
+        val existsByUsername = this.repository.existsByUsername(USERNAME_TEST)
+
+        // THEN
         assertThat(existsByUsername).isTrue
     }
 
