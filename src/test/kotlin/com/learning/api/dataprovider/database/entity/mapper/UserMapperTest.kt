@@ -36,5 +36,4 @@ class UserMapperTest : BaseTest() {
         assertThat(domain.username)
             .isEqualTo(entity.username)
     }
-
 }
