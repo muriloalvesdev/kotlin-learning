@@ -4,6 +4,7 @@ sudo: true
 
 script:
   - chmod +x ./.ci/script.sh 
+  - chmod +x mvnw
   - ./.ci/script.sh
 
 env:
