@@ -1,7 +1,2 @@
 codecov:
     token: "9bf0508f-b097-49c5-82b8-9aac3f1c458c"
-
-    ignore:
-        - "com/learning/api/core/domain/user"
-        - "com/learning/api/dataprovider/database/exception"
-        - "com/learning/api/infrastructure/config"
