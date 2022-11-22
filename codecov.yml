@@ -2,7 +2,6 @@ codecov:
     token: "9bf0508f-b097-49c5-82b8-9aac3f1c458c"
 
     ignore:
-        - "src/main/kotlin/com/learning/api/core/gateway"
-        - "src/main/kotlin/com/learning/api/dataprovider/database/entity"
-        - "src/main/kotlin/com/learning/api/entrypoint/dto"
-        - "src/main/kotlin/com/learning/api/infrastructure/config"
+        - "com/learning/api/core/domain/user"
+        - "com/learning/api/dataprovider/database/exception"
+        - "com/learning/api/infrastructure/config"
