@@ -1,6 +1,6 @@
 package com.learning.api.entrypoint.advice
 
-import com.learning.api.BaseTest.Companion.USERNAME_TEST
+import com.learning.api.BaseTest
 import com.learning.api.dataprovider.database.exception.UserAlreadyExistsException
 import com.learning.api.dataprovider.database.exception.UsernameNotFoundException
 import org.assertj.core.api.Assertions.assertThat
@@ -8,7 +8,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
 
-class AdviceControllerTest {
+class AdviceControllerTest : BaseTest() {
 
     private val adviceController: AdviceController = AdviceController()
 
