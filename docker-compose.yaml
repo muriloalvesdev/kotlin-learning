@@ -1,5 +1,12 @@
 version: "3"
 services:
+    h2:
+        container_name: 'h2'
+        hostname: 'h2'
+        image: oscarfonts/h2
+        ports:
+            - "8181:8181"
+            - "1521:1521"
     kotlin:
         image: muriloalvesdev/kotlin
         network_mode: bridge
@@ -9,3 +16,5 @@ services:
         ports:
             - "8081:8081"
         restart: unless-stopped
+        depends_on:
+            - h2

@@ -20,5 +20,7 @@ jobs:
                   check-latest: true
             - name: Add permissions
               run: chmod +x mvnw && chmod +x .ci/script.sh
-            - name: Build Tests
-              run: ./.ci/script.sh
+            - name: Build Unit Tests
+              run: ./.ci/unit-tests.sh
+            - name: Build Integration Tests
+              run: ./.ci/integration-tests.sh
