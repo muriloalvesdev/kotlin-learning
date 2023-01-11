@@ -1,7 +1,7 @@
 package com.learning.api.dataprovider.database.repository
 
 import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
-import com.learning.api.dataprovider.database.entity.UserEntity
+import com.learning.api.ConstantsTests.Companion.entity
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Tag
@@ -49,7 +49,7 @@ class UserEntityRepositoryIntegrationTests {
     @Test
     fun shouldSave() {
         // GIVEN | WHEN
-        val userEntity = this.repository!!.save(UserEntity(USERNAME_TEST))
+        val userEntity = this.repository!!.save(entity)
 
         //THEN
         assertThat(userEntity.username).isEqualTo(USERNAME_TEST)
@@ -62,7 +62,7 @@ class UserEntityRepositoryIntegrationTests {
     @Test
     fun shouldSaveAndFindByUserNameWithSuccess() {
         // GIVEN
-        this.repository!!.save(UserEntity(USERNAME_TEST))
+        this.repository!!.save(entity)
 
         // WHEN
         val userEntityOptional = this.repository.findByUsername(USERNAME_TEST)
@@ -80,7 +80,7 @@ class UserEntityRepositoryIntegrationTests {
     @Test
     fun shouldCheckUsernameExistsWithResponseTrue() {
         // GIVEN
-        this.repository!!.save(UserEntity(USERNAME_TEST))
+        this.repository!!.save(entity)
 
         // WHEN
         val existsByUsername = this.repository.existsByUsername(USERNAME_TEST)
