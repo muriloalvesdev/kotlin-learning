@@ -1,6 +1,7 @@
 package com.learning.api.dataprovider.database.gateway
 
 import com.learning.api.BaseTest
+import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.core.domain.user.User
 import com.learning.api.core.gateway.UserGateway
 import com.learning.api.dataprovider.database.entity.UserEntity

@@ -1,13 +1,15 @@
 package com.learning.api.dataprovider.database.repository
 
-import com.learning.api.BaseTest.Companion.USERNAME_TEST
+import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.dataprovider.database.entity.UserEntity
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest
 
+@Tag("integration-tests")
 @DataJpaTest
 class UserEntityRepositoryIntegrationTests {
 
@@ -86,6 +88,4 @@ class UserEntityRepositoryIntegrationTests {
         // THEN
         assertThat(existsByUsername).isTrue
     }
-
-
 }

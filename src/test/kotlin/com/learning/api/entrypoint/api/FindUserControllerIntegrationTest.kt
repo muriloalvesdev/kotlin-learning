@@ -1,6 +1,7 @@
 package com.learning.api.entrypoint.api
 
 import com.learning.api.BaseIntegrationTests
+import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.core.domain.user.User
 import org.junit.jupiter.api.Test
 import org.mockito.Mockito.anyString

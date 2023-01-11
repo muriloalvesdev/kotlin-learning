@@ -1,6 +1,7 @@
 package com.learning.api.entrypoint.advice
 
 import com.learning.api.BaseTest
+import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.dataprovider.database.exception.UserAlreadyExistsException
 import com.learning.api.dataprovider.database.exception.UsernameNotFoundException
 import org.assertj.core.api.Assertions.assertThat

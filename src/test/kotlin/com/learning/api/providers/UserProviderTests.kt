@@ -1,6 +1,6 @@
 package com.learning.api.providers
 
-import com.learning.api.BaseTest.Companion.USERNAME_TEST
+import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.core.domain.user.User
 import org.junit.jupiter.api.extension.ExtensionContext
 import org.junit.jupiter.params.provider.Arguments
