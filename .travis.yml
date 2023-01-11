@@ -6,6 +6,8 @@ before_install:
   - chmod +x mvnw
 
 script:
+  - chmod +x ./.ci/unit-tests.sh
+  - chmod +x ./.ci/integration-tests.sh
   - ./.ci/unit-tests.sh
   - ./.ci/integration-tests.sh
 
