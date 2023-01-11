@@ -7,7 +7,6 @@ import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
-import java.lang.String.format
 
 class AdviceControllerTest {
 
@@ -20,17 +19,17 @@ class AdviceControllerTest {
     @Test
     fun shouldReturnUsernameNotFoundException() {
         //GIVEN
-        val messageExceptionExpected = format("username=[%s] not found.", USERNAME_TEST)
+        val exceptionExpected = UsernameNotFoundException(USERNAME_TEST)
 
         //WHEN
         val responseEntity = this.adviceController
-            .handler(UsernameNotFoundException(USERNAME_TEST))
+            .handler(exceptionExpected)
 
         //THEN
         assertThat(responseEntity.body!!.code)
             .isEqualTo(HttpStatus.NOT_FOUND.value())
         assertThat(responseEntity.body!!.message)
-            .isEqualTo(messageExceptionExpected)
+            .isEqualTo(exceptionExpected.message)
     }
 
     @DisplayName(
@@ -40,16 +39,18 @@ class AdviceControllerTest {
     @Test
     fun shouldReturnUserAlreadyExistsException() {
         //GIVEN
-        val messageExceptionExpected = "username=[$USERNAME_TEST] already exists."
-
+        val exceptionExpected = UserAlreadyExistsException(USERNAME_TEST)
         //WHEN
         val responseEntity = this.adviceController
-            .handler(UserAlreadyExistsException(USERNAME_TEST))
+            .handler(exceptionExpected)
 
         //THEN
+        assertThat(responseEntity.body).isNotNull
         assertThat(responseEntity.body!!.code)
             .isEqualTo(HttpStatus.CONFLICT.value())
+        assertThat(responseEntity.body!!.message.contains(exceptionExpected.username))
+            .isTrue
         assertThat(responseEntity.body!!.message)
-            .isEqualTo(messageExceptionExpected)
+            .isEqualTo(exceptionExpected.message)
     }
 }

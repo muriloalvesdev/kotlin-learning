@@ -14,7 +14,7 @@
     <name>api</name>
     <description>Demo Kotlin API With Clean Arch</description>
     <properties>
-        <java.version>17</java.version>
+        <java.version>11</java.version>
         <kotlin.version>1.6.21</kotlin.version>
     </properties>
     <dependencies>
@@ -73,12 +73,12 @@
         <dependency>
             <artifactId>springfox-swagger2</artifactId>
             <groupId>io.springfox</groupId>
-            <version>2.9.2</version>
+            <version>3.0.0</version>
         </dependency>
         <dependency>
             <artifactId>springfox-swagger-ui</artifactId>
             <groupId>io.springfox</groupId>
-            <version>2.10.0</version>
+            <version>3.0.0</version>
         </dependency>
     </dependencies>
 
@@ -87,16 +87,15 @@
         <testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
         <plugins>
             <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.10</version>
-                <configuration>
-                    <useFile>false</useFile>
-                </configuration>
-            </plugin>
-            <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.1</version>
+                <version>0.8.8</version>
+                <configuration>
+                    <excludes>
+                        <exclude>**/ApiApplication*</exclude>
+                        <exclude>**/infrastructure/config/**</exclude>
+                    </excludes>
+                </configuration>
                 <executions>
                     <execution>
                         <goals>
@@ -143,5 +142,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
