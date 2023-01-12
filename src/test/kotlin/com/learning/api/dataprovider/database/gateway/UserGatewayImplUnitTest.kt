@@ -1,6 +1,6 @@
 package com.learning.api.dataprovider.database.gateway
 
-import com.learning.api.BaseTest
+import com.learning.api.BaseUnitTest
 import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.ConstantsTests.Companion.entity
 import com.learning.api.core.domain.user.User
@@ -22,7 +22,7 @@ import org.mockito.Mockito.any
 import java.lang.String.format
 import java.util.Optional
 
-class UserGatewayImplTest : BaseTest() {
+class UserGatewayImplUnitTest : BaseUnitTest() {
 
     private val gatewayImpl: UserGateway = UserGatewayImpl(this.repository, this.mapper)
 

@@ -1,6 +1,6 @@
 package com.learning.api.core.usecase
 
-import com.learning.api.BaseTest
+import com.learning.api.BaseUnitTest
 import com.learning.api.core.domain.user.User
 import com.learning.api.providers.UserProviderTests
 import org.junit.jupiter.api.DisplayName
@@ -10,7 +10,7 @@ import org.mockito.BDDMockito.doNothing
 import org.mockito.BDDMockito.times
 import org.mockito.BDDMockito.verify
 
-class CreateUserUseCaseTest : BaseTest() {
+class CreateUserUseCaseUnitTest : BaseUnitTest() {
 
     private val useCase: CreateUserUseCase = CreateUserUseCase(this.gateway)
 

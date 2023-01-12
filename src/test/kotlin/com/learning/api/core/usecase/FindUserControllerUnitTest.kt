@@ -1,6 +1,6 @@
 package com.learning.api.core.usecase
 
-import com.learning.api.BaseTest
+import com.learning.api.BaseUnitTest
 import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.core.domain.user.User
 import com.learning.api.dataprovider.database.exception.UsernameNotFoundException
@@ -14,7 +14,7 @@ import org.junit.jupiter.params.provider.ArgumentsSource
 import org.mockito.BDDMockito
 import java.util.Optional
 
-class FindUserControllerTest : BaseTest() {
+class FindUserControllerUnitTest : BaseUnitTest() {
     private val useCase: FindUserUseCase = FindUserUseCase(this.gateway)
 
     @DisplayName("Deve buscar um usuario pelo username e encontra-lo.")

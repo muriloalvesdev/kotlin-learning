@@ -7,14 +7,14 @@ import org.junit.jupiter.api.Tag
 import org.mockito.Mockito
 
 @Tag("unit-tests")
-open class BaseTest {
+open class BaseUnitTest {
 
     // MAPPER
-    val mapper: UserMapper = UserMapper()
+    protected val mapper: UserMapper = UserMapper()
 
     //GATEWAY
-    val gateway: UserGateway = Mockito.mock(UserGateway::class.java)
+    protected val gateway: UserGateway = Mockito.mock(UserGateway::class.java)
 
     //REPOSITORY
-    val repository: UserEntityRepository = Mockito.mock(UserEntityRepository::class.java)
+    protected val repository: UserEntityRepository = Mockito.mock(UserEntityRepository::class.java)
 }

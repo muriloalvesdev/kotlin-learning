@@ -1,6 +1,6 @@
 package com.learning.api.entrypoint.advice
 
-import com.learning.api.BaseTest
+import com.learning.api.BaseUnitTest
 import com.learning.api.ConstantsTests.Companion.USERNAME_TEST
 import com.learning.api.dataprovider.database.exception.UserAlreadyExistsException
 import com.learning.api.dataprovider.database.exception.UsernameNotFoundException
@@ -9,7 +9,7 @@ import org.junit.jupiter.api.DisplayName
 import org.junit.jupiter.api.Test
 import org.springframework.http.HttpStatus
 
-class AdviceControllerTest : BaseTest() {
+class AdviceControllerUnitTest : BaseUnitTest() {
 
     private val adviceController: AdviceController = AdviceController()
 
@@ -49,7 +49,7 @@ class AdviceControllerTest : BaseTest() {
         assertThat(responseEntity.body).isNotNull
         assertThat(responseEntity.body!!.code)
             .isEqualTo(HttpStatus.CONFLICT.value())
-        assertThat(responseEntity.body!!.message.contains(exceptionExpected.username))
+        assertThat(responseEntity.body!!.message.contains(USERNAME_TEST))
             .isTrue
         assertThat(responseEntity.body!!.message)
             .isEqualTo(exceptionExpected.message)
