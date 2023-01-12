@@ -1,3 +1,3 @@
 #!/bin/bash
 export MAVEN_OPTS="-Xmx1G -Xms128m"
-mvn clean test -Dgroups="integration-tests" -Dsurefire.useFile=false
+mvn clean test -Dgroups="integration-tests"
