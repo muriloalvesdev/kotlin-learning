@@ -9,9 +9,9 @@ import javax.persistence.Table
 @Entity
 @Table(name = "users")
 class UserEntity(
-    @Column(name = "username", unique = true)
-    val username: String
-) {
     @Id
-    val uuid: UUID? = UUID.randomUUID()
-}
+    val uuid: UUID = UUID.randomUUID(),
+    
+    @Column(name = "username", unique = true)
+    val username: String,
+)

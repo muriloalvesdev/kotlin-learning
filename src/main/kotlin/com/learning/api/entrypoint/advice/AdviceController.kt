@@ -31,7 +31,7 @@ class AdviceController : ResponseEntityExceptionHandler() {
         userAlreadyExistsException: UserAlreadyExistsException
     ): ResponseEntity<ResponseException> {
         return ResponseEntity
-            .status(NOT_FOUND)
+            .status(CONFLICT)
             .body(
                 ResponseException(userAlreadyExistsException.message!!, CONFLICT.value())
             )

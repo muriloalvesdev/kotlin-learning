@@ -1,6 +1,7 @@
 package com.learning.api.entrypoint.api
 
 import com.learning.api.core.usecase.FindUserUseCase
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -16,5 +17,5 @@ class FindUserController(
     fun find(
         @PathVariable(name = "username")
         username: String
-    ) = this.useCase.find(username)
+    ) = ResponseEntity.ok(this.useCase.find(username))
 }

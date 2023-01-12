@@ -14,7 +14,7 @@ class UserGatewayImpl(
 
     override fun find(
         username: String
-    ): Optional<User> = this.repository.findByUsername(username).map { this.mapper.toUserDomain(it) }
+    ): Optional<User> = this.repository.findByUsername(username).map(this.mapper::toUserDomain)
 
     override fun save(
         domain: User

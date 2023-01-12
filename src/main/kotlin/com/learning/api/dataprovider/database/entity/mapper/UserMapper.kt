@@ -5,5 +5,5 @@ import com.learning.api.dataprovider.database.entity.UserEntity
 
 class UserMapper {
     fun toUserDomain(entity: UserEntity) = User(entity.username)
-    fun toUserEntity(domain: User) = UserEntity(domain.username)
+    fun toUserEntity(domain: User) = UserEntity(username = domain.username)
 }

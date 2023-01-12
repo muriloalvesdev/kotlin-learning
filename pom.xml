@@ -81,6 +81,7 @@
             <version>3.0.0</version>
         </dependency>
 
+        <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-inline</artifactId>
@@ -107,6 +108,7 @@
                     <excludes>
                         <exclude>**/ApiApplication*</exclude>
                         <exclude>**/infrastructure/config/**</exclude>
+                        <exclude>**/database/entity/**</exclude>
                     </excludes>
                 </configuration>
                 <executions>
