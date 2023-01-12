@@ -4,13 +4,13 @@ import org.springframework.context.annotation.Configuration
 import org.springframework.web.servlet.config.annotation.EnableWebMvc
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 import springfox.documentation.swagger2.annotations.EnableSwagger2
 
 @Configuration
 @EnableSwagger2
 @EnableWebMvc
-class SwaggerConfig : WebMvcConfigurerAdapter() {
+class SwaggerConfig : WebMvcConfigurer {
 
     @Override
     override fun addViewControllers(registry: ViewControllerRegistry) {
