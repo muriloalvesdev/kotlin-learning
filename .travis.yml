@@ -13,8 +13,8 @@ before_install:
 script:
   - chmod +x ./.ci/unit-tests.sh
   - chmod +x ./.ci/integration-tests.sh
-  - ./.ci/unit-tests.sh
   - ./.ci/integration-tests.sh
+  - ./.ci/unit-tests.sh
 
 codecov:
     token: 9bf0508f-b097-49c5-82b8-9aac3f1c458c
